@@ -16,7 +16,6 @@ class CustomerResource extends JsonResource
     {
 
         return [
-          "tmp"=> $this->resource,
           "id" => $this->id,
           "name"=> $this->name,
           "email"=> $this->email,
@@ -25,6 +24,7 @@ class CustomerResource extends JsonResource
           "city" => $this->city,
           "state" => $this->state,
           "postalCode" => $this-> postal_code,
+          "invoices" => InvoiceResource::collection($this->whenLoaded("invoices")),
         ];
     }
 }
